@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float boostSpeed = 30.0f;
     [SerializeField] float normalSpeed = 20.0f;
     SurfaceEffector2D effector;
+    bool canMove = true;
 
     void Start()
     {
@@ -18,8 +19,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        RotatePlayer();
-        RespondToBoost();
+        if (canMove)
+        {
+            RotatePlayer();
+            RespondToBoost();
+        }
+    }
+
+    public void DisableControles()
+    {
+        canMove = false;
     }
 
     void RotatePlayer()
